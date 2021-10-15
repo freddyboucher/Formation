@@ -7,3 +7,5 @@ Formation
    <br/>[https://2-dot-formation-open.ew.r.appspot.com/](https://2-dot-formation-open.ew.r.appspot.com/)
 3. Move entire code into SamplePage
    <br/>[https://3-dot-formation-open.ew.r.appspot.com/](https://3-dot-formation-open.ew.r.appspot.com/)
+4. Declare CSS in UiBinder <ui:style>
+   <br/>[https://4-dot-formation-open.ew.r.appspot.com/](https://4-dot-formation-open.ew.r.appspot.com/)

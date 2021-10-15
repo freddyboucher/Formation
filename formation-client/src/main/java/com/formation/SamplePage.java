@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -34,6 +35,7 @@ public class SamplePage extends Composite {
    */
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
+  @UiField MyStyle style;
   @UiField Button sendButton;
   @UiField TextBox nameField;
   @UiField Label errorLabel;
@@ -41,9 +43,6 @@ public class SamplePage extends Composite {
   public SamplePage() {
     initWidget(uiBinder.createAndBindUi(this));
     nameField.setText("GWT User");
-
-    // We can add style names to widgets
-    sendButton.addStyleName("sendButton");
 
     // Focus the cursor on the name field when the app loads
     nameField.setFocus(true);
@@ -55,11 +54,11 @@ public class SamplePage extends Composite {
     dialogBox.setAnimationEnabled(true);
     final Button closeButton = new Button("Close");
     // We can set the id of a widget by accessing its Element
-    closeButton.getElement().setId("closeButton");
+    closeButton.addStyleName(style.closeButton());
     final Label textToServerLabel = new Label();
     final HTML serverResponseLabel = new HTML();
     VerticalPanel dialogVPanel = new VerticalPanel();
-    dialogVPanel.addStyleName("dialogVPanel");
+    dialogVPanel.addStyleName(style.dialogVPanel());
     dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
     dialogVPanel.add(textToServerLabel);
     dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
@@ -115,7 +114,7 @@ public class SamplePage extends Composite {
           public void onFailure(Throwable caught) {
             // Show the RPC error message to the user
             dialogBox.setText("Remote Procedure Call - Failure");
-            serverResponseLabel.addStyleName("serverResponseLabelError");
+            serverResponseLabel.addStyleName(style.serverResponseLabelError());
             serverResponseLabel.setHTML(SERVER_ERROR);
             dialogBox.center();
             closeButton.setFocus(true);
@@ -123,7 +122,7 @@ public class SamplePage extends Composite {
 
           public void onSuccess(GreetingResponse result) {
             dialogBox.setText("Remote Procedure Call");
-            serverResponseLabel.removeStyleName("serverResponseLabelError");
+            serverResponseLabel.removeStyleName(style.serverResponseLabelError());
             serverResponseLabel.setHTML(
                 new SafeHtmlBuilder().appendEscaped(result.getGreeting()).appendHtmlConstant("<br><br>I am running ").appendEscaped(result.getServerInfo())
                     .appendHtmlConstant(".<br><br>It looks like you are using:<br>").appendEscaped(result.getUserAgent()).toSafeHtml());
@@ -141,4 +140,12 @@ public class SamplePage extends Composite {
   }
 
   interface Binder extends UiBinder<Widget, SamplePage> {}
+
+  interface MyStyle extends CssResource {
+    String dialogVPanel();
+
+    String serverResponseLabelError();
+
+    String closeButton();
+  }
 }
