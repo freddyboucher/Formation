@@ -9,3 +9,5 @@ Formation
    <br/>[https://3-dot-formation-open.ew.r.appspot.com/](https://3-dot-formation-open.ew.r.appspot.com/)
 4. Declare CSS in UiBinder <ui:style>
    <br/>[https://4-dot-formation-open.ew.r.appspot.com/](https://4-dot-formation-open.ew.r.appspot.com/)
+5. Implement a MenuBar
+   <br/>[https://5-dot-formation-open.ew.r.appspot.com/](https://5-dot-formation-open.ew.r.appspot.com/)
