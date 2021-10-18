@@ -21,3 +21,5 @@ Formation
    <br/>[https://9-dot-formation-open.ew.r.appspot.com/](https://9-dot-formation-open.ew.r.appspot.com/)
 10. Introduce ShowcasePage
     <br/>[https://10-dot-formation-open.ew.r.appspot.com/](https://10-dot-formation-open.ew.r.appspot.com/)
+11. Use GWT History
+    <br/>[https://11-dot-formation-open.ew.r.appspot.com/](https://11-dot-formation-open.ew.r.appspot.com/)
