@@ -13,3 +13,5 @@ Formation
    <br/>[https://5-dot-formation-open.ew.r.appspot.com/](https://5-dot-formation-open.ew.r.appspot.com/)
 6. Enable logging
    <br/>[https://6-dot-formation-open.ew.r.appspot.com/](https://6-dot-formation-open.ew.r.appspot.com/)
+7. De-obfuscate stacktrace
+   <br/>[https://7-dot-formation-open.ew.r.appspot.com/](https://7-dot-formation-open.ew.r.appspot.com/)

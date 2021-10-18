@@ -42,6 +42,7 @@
         <configuration>
           <moduleName>com.formation.App</moduleName>
           <moduleShortName>app</moduleShortName>
+          <extra>${project.basedir}/target/formation-client-1.0-SNAPSHOT/WEB-INF/deploy</extra>
         </configuration>
       </plugin>
     </plugins>
