@@ -11,3 +11,5 @@ Formation
    <br/>[https://4-dot-formation-open.ew.r.appspot.com/](https://4-dot-formation-open.ew.r.appspot.com/)
 5. Implement a MenuBar
    <br/>[https://5-dot-formation-open.ew.r.appspot.com/](https://5-dot-formation-open.ew.r.appspot.com/)
+6. Enable logging
+   <br/>[https://6-dot-formation-open.ew.r.appspot.com/](https://6-dot-formation-open.ew.r.appspot.com/)
