@@ -17,3 +17,5 @@ Formation
    <br/>[https://7-dot-formation-open.ew.r.appspot.com/](https://7-dot-formation-open.ew.r.appspot.com/)
 8. Explore compiler.stackMode
    <br/>[https://8-dot-formation-open.ew.r.appspot.com/](https://8-dot-formation-open.ew.r.appspot.com/)
+9. Fix navigation exception
+   <br/>[https://9-dot-formation-open.ew.r.appspot.com/](https://9-dot-formation-open.ew.r.appspot.com/)
