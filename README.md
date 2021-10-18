@@ -15,3 +15,5 @@ Formation
    <br/>[https://6-dot-formation-open.ew.r.appspot.com/](https://6-dot-formation-open.ew.r.appspot.com/)
 7. De-obfuscate stacktrace
    <br/>[https://7-dot-formation-open.ew.r.appspot.com/](https://7-dot-formation-open.ew.r.appspot.com/)
+8. Explore compiler.stackMode
+   <br/>[https://8-dot-formation-open.ew.r.appspot.com/](https://8-dot-formation-open.ew.r.appspot.com/)
