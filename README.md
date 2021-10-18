@@ -23,3 +23,5 @@ Formation
     <br/>[https://10-dot-formation-open.ew.r.appspot.com/](https://10-dot-formation-open.ew.r.appspot.com/)
 11. Use GWT History
     <br/>[https://11-dot-formation-open.ew.r.appspot.com/](https://11-dot-formation-open.ew.r.appspot.com/)
+12. Use HTML5 pushState
+    <br/>[https://12-dot-formation-open.ew.r.appspot.com/](https://12-dot-formation-open.ew.r.appspot.com/)

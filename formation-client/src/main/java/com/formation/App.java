@@ -1,7 +1,8 @@
 package com.formation;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.History;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.MenuBar;
@@ -13,6 +14,8 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class App implements EntryPoint {
+
+  private static final PlaceHistoryHandler.Historian historian = GWT.create(PlaceHistoryHandler.Historian.class);
 
   private final SamplePage samplePage;
   private final ShowcasePage showcasePage;
@@ -32,17 +35,17 @@ public class App implements EntryPoint {
     dockPabel.setWidth("100%");
     MenuBar menuBar = new MenuBar();
     dockPabel.add(simplePanel, DockPanel.CENTER);
-    menuBar.addItem(new MenuItem("Sample", () -> History.newItem("sample")));
-    menuBar.addItem(new MenuItem("Showcase", () -> History.newItem("showcase")));
+    menuBar.addItem(new MenuItem("Sample", () -> historian.newItem("sample", true)));
+    menuBar.addItem(new MenuItem("Showcase", () -> historian.newItem("showcase", true)));
     dockPabel.add(menuBar, DockPanel.NORTH);
     RootPanel.get().add(dockPabel);
 
-    History.addValueChangeHandler(event -> handleToken(event.getValue()));
+    historian.addValueChangeHandler(event -> handleToken(event.getValue()));
 
-    if (History.getToken().isEmpty()) {
-      History.newItem("sample");
+    if (historian.getToken().isEmpty()) {
+      historian.newItem("sample", true);
     } else {
-      handleToken(History.getToken());
+      handleToken(historian.getToken());
     }
   }
 

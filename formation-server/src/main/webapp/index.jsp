@@ -1,13 +1,15 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <!doctype html>
-<!-- The DOCTYPE declaration above will set the     -->
-<!-- browser's rendering engine into                -->
-<!-- "Standards Mode". Replacing this declaration   -->
+<!-- The DOCTYPE declaration above will set the -->
+<!-- browser's rendering engine into -->
+<!-- "Standards Mode". Replacing this declaration -->
 <!-- with a "Quirks Mode" doctype is not supported. -->
 
 <html>
 <head>
-  <meta charset=UTF-8>
-
+  <meta charset="UTF-8">
   <!--                                                               -->
   <!-- Consider inlining CSS to reduce the number of requested files -->
   <!--                                                               -->
