@@ -20,9 +20,11 @@ public class App implements EntryPoint {
     dockPabel.setWidth("100%");
     MenuBar menuBar = new MenuBar();
     SamplePage samplePage = new SamplePage();
+    ShowcasePage showcasePage = new ShowcasePage();
     SimplePanel simplePanel = new SimplePanel();
     dockPabel.add(simplePanel, DockPanel.CENTER);
     menuBar.addItem(new MenuItem("Sample", () -> simplePanel.setWidget(samplePage)));
+    menuBar.addItem(new MenuItem("Showcase", () -> simplePanel.setWidget(showcasePage)));
     dockPabel.add(menuBar, DockPanel.NORTH);
     RootPanel.get().add(dockPabel);
   }
