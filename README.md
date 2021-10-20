@@ -39,3 +39,5 @@ Formation
     <br/>[https://18-dot-formation-open.ew.r.appspot.com/](https://18-dot-formation-open.ew.r.appspot.com/)
 19. Export a GWT method to javascript
     <br/>[https://19-dot-formation-open.ew.r.appspot.com/](https://19-dot-formation-open.ew.r.appspot.com/)
+20. Implement an EventBus
+    <br/>[https://20-dot-formation-open.ew.r.appspot.com/](https://20-dot-formation-open.ew.r.appspot.com/)

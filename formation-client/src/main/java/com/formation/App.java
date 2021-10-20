@@ -11,6 +11,8 @@ import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -18,6 +20,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 public class App implements EntryPoint {
 
   private static final PlaceHistoryHandler.Historian historian = GWT.create(PlaceHistoryHandler.Historian.class);
+  public static final EventBus EVENT_BUS = new SimpleEventBus();
 
   private final SamplePage samplePage;
   private final ShowcasePage showcasePage;

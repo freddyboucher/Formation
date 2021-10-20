@@ -2,6 +2,7 @@ package com.formation;
 
 import static com.formation.JQuery.$;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.fusesource.restygwt.client.Method;
@@ -77,6 +78,12 @@ public class ShowcasePage extends Composite {
     rowCountButton.addClickHandler(event -> Window.alert(String.valueOf($(cellTable.getElement()).find("tbody:first tr").length)));
     rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
     root.add(rowCountButton);
+
+    App.EVENT_BUS.addHandler(CreateGreetingResponseEvent.TYPE, event -> {
+      GreetingResponse greetingResponse = event.getGreetingResponse();
+      greetingResponse.setId((long) cellTable.getRowCount());
+      dataProvider.updateRowData(cellTable.getRowCount(), Arrays.asList(greetingResponse));
+    });
   }
 
   public static void sayHello() {

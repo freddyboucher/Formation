@@ -128,6 +128,7 @@ public class SamplePage extends Composite {
                     .appendHtmlConstant(".<br><br>It looks like you are using:<br>").appendEscaped(result.getUserAgent()).toSafeHtml());
             dialogBox.center();
             closeButton.setFocus(true);
+            App.EVENT_BUS.fireEvent(new CreateGreetingResponseEvent(result));
           }
         });
       }
