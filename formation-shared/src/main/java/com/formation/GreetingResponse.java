@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class GreetingResponse implements Serializable {
+  private Long id;
   private String greeting;
   private String serverInfo;
   private String userAgent;
@@ -30,5 +31,13 @@ public class GreetingResponse implements Serializable {
 
   public void setUserAgent(String userAgent) {
     this.userAgent = userAgent;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 }
