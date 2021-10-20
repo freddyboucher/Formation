@@ -7,11 +7,15 @@ import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.REST;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 
@@ -42,8 +46,10 @@ public class ShowcasePage extends Composite {
       }
     };
     cellTable.addColumn(userAgentColumn, "User Agent");
-    initWidget(cellTable);
-    setWidth("100%");
+    FlowPanel root = new FlowPanel();
+    root.add(cellTable);
+    initWidget(root);
+    cellTable.setWidth("100%");
     dataProvider = new AsyncDataProvider<GreetingResponse>(GreetingResponse::getId) {
       @Override
       protected void onRangeChanged(HasData display) {
@@ -62,5 +68,13 @@ public class ShowcasePage extends Composite {
     };
     dataProvider.addDataDisplay(cellTable);
 
+    Button rowCountButton = new Button("Row count");
+    rowCountButton.addClickHandler(event -> Window.alert(String.valueOf(rowCount(cellTable.getElement()))));
+    rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
+    root.add(rowCountButton);
   }
+
+  native int rowCount(Element parent) /*-{
+    return $wnd.$(parent).find("tbody:first tr").length;
+  }-*/;
 }

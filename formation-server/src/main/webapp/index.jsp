@@ -26,6 +26,7 @@
   <!-- be added before this line.                -->
   <!--                                           -->
   <script src="app/app.nocache.js"></script>
+  <script src="jquery-3.6.0.min.js"></script>
 </head>
 
 <!--                                           -->

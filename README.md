@@ -33,3 +33,5 @@ Formation
     <br/>[https://15-dot-formation-open.ew.r.appspot.com/](https://15-dot-formation-open.ew.r.appspot.com/)
 16. Implement a REST api
     <br/>[https://16-dot-formation-open.ew.r.appspot.com/](https://16-dot-formation-open.ew.r.appspot.com/)
+17. Add a row count button using jquery & jsni
+    <br/>[https://17-dot-formation-open.ew.r.appspot.com/](https://17-dot-formation-open.ew.r.appspot.com/)
