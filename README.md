@@ -37,3 +37,5 @@ Formation
     <br/>[https://17-dot-formation-open.ew.r.appspot.com/](https://17-dot-formation-open.ew.r.appspot.com/)
 18. Replace jsni by JsInterop
     <br/>[https://18-dot-formation-open.ew.r.appspot.com/](https://18-dot-formation-open.ew.r.appspot.com/)
+19. Export a GWT method to javascript
+    <br/>[https://19-dot-formation-open.ew.r.appspot.com/](https://19-dot-formation-open.ew.r.appspot.com/)

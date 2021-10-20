@@ -91,6 +91,12 @@
           <configuration>
             <sourceLevel>1.8</sourceLevel>
             <failOnError>true</failOnError>
+            <compilerArgs>
+              <arg>-generateJsInteropExports</arg>
+            </compilerArgs>
+            <codeserverArgs>
+              <arg>-generateJsInteropExports</arg>
+            </codeserverArgs>
           </configuration>
         </plugin>
         <plugin>

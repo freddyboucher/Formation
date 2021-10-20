@@ -20,6 +20,10 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+
+@JsType(namespace = JsPackage.GLOBAL)
 public class ShowcasePage extends Composite {
   private final RestGreetingService greetingService = GWT.create(RestGreetingService.class);
   private final AsyncDataProvider<GreetingResponse> dataProvider;
@@ -73,5 +77,9 @@ public class ShowcasePage extends Composite {
     rowCountButton.addClickHandler(event -> Window.alert(String.valueOf($(cellTable.getElement()).find("tbody:first tr").length)));
     rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
     root.add(rowCountButton);
+  }
+
+  public static void sayHello() {
+    Window.alert("Hello");
   }
 }
