@@ -1,15 +1,21 @@
 package com.formation;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.AsyncDataProvider;
+import com.google.gwt.view.client.HasData;
 
 public class ShowcasePage extends Composite {
+  private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+  private final AsyncDataProvider<GreetingResponse> dataProvider;
+
   public ShowcasePage() {
     CellTable<GreetingResponse> cellTable = new CellTable<>(GreetingResponse::getId);
     Column<GreetingResponse, String> greetingColumn = new TextColumn<GreetingResponse>() {
@@ -35,21 +41,23 @@ public class ShowcasePage extends Composite {
     cellTable.addColumn(userAgentColumn, "User Agent");
     initWidget(cellTable);
     setWidth("100%");
-    ListDataProvider<GreetingResponse> dataProvider = new ListDataProvider<>(GreetingResponse::getId);
-    dataProvider.getList().addAll(generateGreetingResponses());
-    dataProvider.addDataDisplay(cellTable);
-  }
+    dataProvider = new AsyncDataProvider<GreetingResponse>(GreetingResponse::getId) {
+      @Override
+      protected void onRangeChanged(HasData display) {
+        greetingService.fetchAll(new AsyncCallback<List<GreetingResponse>>() {
+          @Override
+          public void onFailure(Throwable caught) {
+            Window.alert(caught.getMessage());
+          }
 
-  private static List<GreetingResponse> generateGreetingResponses() {
-    ArrayList<GreetingResponse> list = new ArrayList<>();
-    for (int i = 0; i < 10; i++) {
-      GreetingResponse greetingResponse = new GreetingResponse();
-      greetingResponse.setId((long) i);
-      greetingResponse.setGreeting("Greeting " + i);
-      greetingResponse.setServerInfo("Server Info " + i);
-      greetingResponse.setUserAgent("User Agent " + i);
-      list.add(greetingResponse);
-    }
-    return list;
+          @Override
+          public void onSuccess(List<GreetingResponse> result) {
+            dataProvider.updateRowData(0, result);
+          }
+        });
+      }
+    };
+    dataProvider.addDataDisplay(cellTable);
+
   }
 }

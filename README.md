@@ -27,3 +27,5 @@ Formation
     <br/>[https://12-dot-formation-open.ew.r.appspot.com/](https://12-dot-formation-open.ew.r.appspot.com/)
 13. Create a CellTable<GreetingResponse>
     <br/>[https://13-dot-formation-open.ew.r.appspot.com/](https://13-dot-formation-open.ew.r.appspot.com/)
+14. Make an ajax request to populate the CellTable
+    <br/>[https://14-dot-formation-open.ew.r.appspot.com/](https://14-dot-formation-open.ew.r.appspot.com/)

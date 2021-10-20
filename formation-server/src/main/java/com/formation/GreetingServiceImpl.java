@@ -1,5 +1,8 @@
 package com.formation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -24,5 +27,19 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
     response.setGreeting("Hello, " + input + "!");
 
     return response;
+  }
+
+  @Override
+  public List<GreetingResponse> fetchAll() {
+    ArrayList<GreetingResponse> list = new ArrayList<>();
+    for (int i = 0; i < 10; i++) {
+      GreetingResponse greetingResponse = new GreetingResponse();
+      greetingResponse.setId((long) i);
+      greetingResponse.setGreeting("Greeting " + i);
+      greetingResponse.setServerInfo("Server Info " + i);
+      greetingResponse.setUserAgent("User Agent " + i);
+      list.add(greetingResponse);
+    }
+    return list;
   }
 }

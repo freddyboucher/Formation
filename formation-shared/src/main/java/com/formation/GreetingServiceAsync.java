@@ -1,5 +1,7 @@
 package com.formation;
 
+import java.util.List;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -7,4 +9,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface GreetingServiceAsync {
   void greetServer(String input, AsyncCallback<GreetingResponse> callback);
+
+  void fetchAll(AsyncCallback<List<GreetingResponse>> callback);
 }
