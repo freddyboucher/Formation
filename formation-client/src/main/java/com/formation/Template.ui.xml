@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:style>
+  </ui:style>
+  <g:HTMLPanel>
+    <nav class="navbar navbar-light bg-light fixed-top">
+      <div class="container-fluid justify-content-start">
+        <g:Anchor ui:field="sampleAnchor" styleName="btn btn-outline-secondary me-2">Sample</g:Anchor>
+        <g:Anchor ui:field="showcaseAnchor" styleName="btn btn-outline-secondary">Showcase</g:Anchor>
+      </div>
+    </nav>
+    <g:SimplePanel ui:field="simplePanel" />
+  </g:HTMLPanel>
+</ui:UiBinder>

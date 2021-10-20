@@ -14,4 +14,6 @@ public abstract class JQuery {
   public static native JQuery $(Node node);
 
   public native JQuery find(String selector);
+
+  public native void modal(String option);
 }

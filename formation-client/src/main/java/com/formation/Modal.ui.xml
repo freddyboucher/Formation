@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:style>
+
+  </ui:style>
+  <g:HTMLPanel styleName="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <g:Label ui:field="header" styleName="modal-title h5" />
+        </div>
+        <g:SimplePanel ui:field="body" styleName="modal-body" />
+        <g:SimplePanel ui:field="footer" styleName="modal-footer" />
+      </div>
+    </div>
+  </g:HTMLPanel>
+</ui:UiBinder>

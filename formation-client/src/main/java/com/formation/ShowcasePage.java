@@ -30,7 +30,11 @@ public class ShowcasePage extends Composite {
   private final AsyncDataProvider<GreetingResponse> dataProvider;
 
   public ShowcasePage() {
-    CellTable<GreetingResponse> cellTable = new CellTable<>(GreetingResponse::getId);
+    CellTable<GreetingResponse> cellTable = new CellTable<>(Integer.MAX_VALUE, GWT.create(DefaultResources.class), GreetingResponse::getId);
+    cellTable.setSkipRowHoverCheck(true);
+    cellTable.setSkipRowHoverFloatElementCheck(true);
+    cellTable.setSkipRowHoverStyleUpdate(true);
+    cellTable.setStyleName("table table-striped table-hover");
     Column<GreetingResponse, String> greetingColumn = new TextColumn<GreetingResponse>() {
       @Override
       public String getValue(GreetingResponse object) {
@@ -75,6 +79,7 @@ public class ShowcasePage extends Composite {
     dataProvider.addDataDisplay(cellTable);
 
     Button rowCountButton = new Button("Row count");
+    rowCountButton.setStyleName("btn btn-secondary");
     rowCountButton.addClickHandler(event -> Window.alert(String.valueOf($(cellTable.getElement()).find("tbody:first tr").length)));
     rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
     root.add(rowCountButton);

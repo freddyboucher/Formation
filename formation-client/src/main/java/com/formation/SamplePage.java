@@ -6,18 +6,16 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class SamplePage extends Composite {
@@ -35,7 +33,6 @@ public class SamplePage extends Composite {
    */
   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
 
-  @UiField MyStyle style;
   @UiField Button sendButton;
   @UiField TextBox nameField;
   @UiField Label errorLabel;
@@ -49,23 +46,20 @@ public class SamplePage extends Composite {
     nameField.selectAll();
 
     // Create the popup dialog box
-    final DialogBox dialogBox = new DialogBox();
-    dialogBox.setText("Remote Procedure Call");
-    dialogBox.setAnimationEnabled(true);
+    final Modal dialogBox = new Modal();
+    dialogBox.getHeader().setText("Remote Procedure Call");
     final Button closeButton = new Button("Close");
     // We can set the id of a widget by accessing its Element
-    closeButton.addStyleName(style.closeButton());
+    closeButton.setStyleName("btn btn-secondary");
     final Label textToServerLabel = new Label();
     final HTML serverResponseLabel = new HTML();
-    VerticalPanel dialogVPanel = new VerticalPanel();
-    dialogVPanel.addStyleName(style.dialogVPanel());
+    FlowPanel dialogVPanel = new FlowPanel();
     dialogVPanel.add(new HTML("<b>Sending name to the server:</b>"));
     dialogVPanel.add(textToServerLabel);
     dialogVPanel.add(new HTML("<br><b>Server replies:</b>"));
     dialogVPanel.add(serverResponseLabel);
-    dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
-    dialogVPanel.add(closeButton);
-    dialogBox.setWidget(dialogVPanel);
+    dialogBox.getFooter().setWidget(closeButton);
+    dialogBox.getBody().setWidget(dialogVPanel);
 
     // Add a handler to close the DialogBox
     closeButton.addClickHandler(new ClickHandler() {
@@ -113,16 +107,16 @@ public class SamplePage extends Composite {
         greetingService.greetServer(textToServer, new AsyncCallback<GreetingResponse>() {
           public void onFailure(Throwable caught) {
             // Show the RPC error message to the user
-            dialogBox.setText("Remote Procedure Call - Failure");
-            serverResponseLabel.addStyleName(style.serverResponseLabelError());
+            dialogBox.getHeader().setText("Remote Procedure Call - Failure");
+            serverResponseLabel.addStyleName("text-danger");
             serverResponseLabel.setHTML(SERVER_ERROR);
             dialogBox.center();
             closeButton.setFocus(true);
           }
 
           public void onSuccess(GreetingResponse result) {
-            dialogBox.setText("Remote Procedure Call");
-            serverResponseLabel.removeStyleName(style.serverResponseLabelError());
+            dialogBox.getHeader().setText("Remote Procedure Call");
+            serverResponseLabel.removeStyleName("text-danger");
             serverResponseLabel.setHTML(
                 new SafeHtmlBuilder().appendEscaped(result.getGreeting()).appendHtmlConstant("<br><br>I am running ").appendEscaped(result.getServerInfo())
                     .appendHtmlConstant(".<br><br>It looks like you are using:<br>").appendEscaped(result.getUserAgent()).toSafeHtml());
@@ -141,12 +135,4 @@ public class SamplePage extends Composite {
   }
 
   interface Binder extends UiBinder<Widget, SamplePage> {}
-
-  interface MyStyle extends CssResource {
-    String dialogVPanel();
-
-    String serverResponseLabelError();
-
-    String closeButton();
-  }
 }
