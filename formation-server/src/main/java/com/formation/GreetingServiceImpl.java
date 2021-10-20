@@ -3,12 +3,14 @@ package com.formation;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.annotation.WebServlet;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * The server side implementation of the RPC service.
  */
-@SuppressWarnings("serial")
+@WebServlet("/app/greet")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
   public GreetingResponse greetServer(String input) throws IllegalArgumentException {

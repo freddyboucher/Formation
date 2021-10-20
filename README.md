@@ -29,3 +29,5 @@ Formation
     <br/>[https://13-dot-formation-open.ew.r.appspot.com/](https://13-dot-formation-open.ew.r.appspot.com/)
 14. Make an ajax request to populate the CellTable
     <br/>[https://14-dot-formation-open.ew.r.appspot.com/](https://14-dot-formation-open.ew.r.appspot.com/)
+15. Update to servlet 3.1 and auto scanning
+    <br/>[https://15-dot-formation-open.ew.r.appspot.com/](https://15-dot-formation-open.ew.r.appspot.com/)
