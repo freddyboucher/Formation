@@ -2,18 +2,21 @@ package com.formation;
 
 import java.util.List;
 
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+import org.fusesource.restygwt.client.REST;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.view.client.AsyncDataProvider;
 import com.google.gwt.view.client.HasData;
 
 public class ShowcasePage extends Composite {
-  private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+  private final RestGreetingService greetingService = GWT.create(RestGreetingService.class);
   private final AsyncDataProvider<GreetingResponse> dataProvider;
 
   public ShowcasePage() {
@@ -44,17 +47,17 @@ public class ShowcasePage extends Composite {
     dataProvider = new AsyncDataProvider<GreetingResponse>(GreetingResponse::getId) {
       @Override
       protected void onRangeChanged(HasData display) {
-        greetingService.fetchAll(new AsyncCallback<List<GreetingResponse>>() {
+        REST.withCallback(new MethodCallback<List<GreetingResponse>>() {
           @Override
-          public void onFailure(Throwable caught) {
-            Window.alert(caught.getMessage());
+          public void onFailure(Method method, Throwable exception) {
+            Window.alert(exception.getMessage());
           }
 
           @Override
-          public void onSuccess(List<GreetingResponse> result) {
-            dataProvider.updateRowData(0, result);
+          public void onSuccess(Method method, List<GreetingResponse> response) {
+            dataProvider.updateRowData(0, response);
           }
-        });
+        }).call(greetingService).fetchAll();
       }
     };
     dataProvider.addDataDisplay(cellTable);

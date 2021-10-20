@@ -1,5 +1,7 @@
 package com.formation;
 
+import org.fusesource.restygwt.client.Defaults;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
@@ -22,6 +24,7 @@ public class App implements EntryPoint {
   private final SimplePanel simplePanel;
 
   public App() {
+    Defaults.setServiceRoot("api");
     samplePage = new SamplePage();
     showcasePage = new ShowcasePage();
     simplePanel = new SimplePanel();
