@@ -1,5 +1,7 @@
 package com.formation;
 
+import static com.formation.JQuery.$;
+
 import java.util.List;
 
 import org.fusesource.restygwt.client.Method;
@@ -7,7 +9,6 @@ import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.REST;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
@@ -69,12 +70,8 @@ public class ShowcasePage extends Composite {
     dataProvider.addDataDisplay(cellTable);
 
     Button rowCountButton = new Button("Row count");
-    rowCountButton.addClickHandler(event -> Window.alert(String.valueOf(rowCount(cellTable.getElement()))));
+    rowCountButton.addClickHandler(event -> Window.alert(String.valueOf($(cellTable.getElement()).find("tbody:first tr").length)));
     rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
     root.add(rowCountButton);
   }
-
-  native int rowCount(Element parent) /*-{
-    return $wnd.$(parent).find("tbody:first tr").length;
-  }-*/;
 }
