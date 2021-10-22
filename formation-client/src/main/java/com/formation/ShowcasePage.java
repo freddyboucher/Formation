@@ -9,8 +9,11 @@ import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.REST;
 
+import com.github.nmorel.gwtjackson.client.JsonSerializationContext;
+import com.github.nmorel.gwtjackson.client.ObjectMapper;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
@@ -35,6 +38,7 @@ public class ShowcasePage extends Composite {
     cellTable.setSkipRowHoverFloatElementCheck(true);
     cellTable.setSkipRowHoverStyleUpdate(true);
     cellTable.setStyleName("table table-striped table-hover");
+
     Column<GreetingResponse, String> greetingColumn = new TextColumn<GreetingResponse>() {
       @Override
       public String getValue(GreetingResponse object) {
@@ -79,9 +83,8 @@ public class ShowcasePage extends Composite {
     dataProvider.addDataDisplay(cellTable);
 
     Button rowCountButton = new Button("Row count");
-    rowCountButton.setStyleName("btn btn-secondary");
+    rowCountButton.setStyleName("btn btn-secondary mt-2");
     rowCountButton.addClickHandler(event -> Window.alert(String.valueOf($(cellTable.getElement()).find("tbody:first tr").length)));
-    rowCountButton.getElement().getStyle().setMarginTop(20, Style.Unit.PX);
     root.add(rowCountButton);
 
     App.EVENT_BUS.addHandler(CreateGreetingResponseEvent.TYPE, event -> {
@@ -89,6 +92,20 @@ public class ShowcasePage extends Composite {
       greetingResponse.setId((long) cellTable.getRowCount());
       dataProvider.updateRowData(cellTable.getRowCount(), Arrays.asList(greetingResponse));
     });
+
+    Button exportButton = new Button("Export");
+    exportButton.setStyleName("btn btn-secondary mt-2 ms-2");
+    exportButton.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        Window.alert(GreetingResponseObjectMapper.INSTANCE.write(cellTable.getVisibleItems(), JsonSerializationContext.builder().indent(true).build()));
+      }
+    });
+    root.add(exportButton);
+  }
+
+  public interface GreetingResponseObjectMapper extends ObjectMapper<List<GreetingResponse>> {
+    GreetingResponseObjectMapper INSTANCE = GWT.create(GreetingResponseObjectMapper.class);
   }
 
   public static void sayHello() {
